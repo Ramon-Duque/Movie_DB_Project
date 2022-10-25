@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Result } from '../models/PopMovie'
+import { PopMovie } from '../models/PopMovie'
 import { getPoster } from '../services/PopularMovies'
 import { getPopMovies } from '../services/PopularMovies'
 
@@ -8,15 +9,17 @@ export default function MovieList() {
 
   useEffect(() => {
     getPopMovies().then((res) => {
-        setMovies(res.data);
+        const { data } = res
+        setMovies(data.results);
         console.log(res.data);
     })
   }, []);
 
   return (
     <div>
+        <h3>Popular Movies</h3>
     {movies.map((movie) => (
-        <ul>{movie.tite}</ul>
+        <ul>{movie.title}</ul>
     ))}
     </div>
   )
