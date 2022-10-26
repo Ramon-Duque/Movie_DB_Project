@@ -1,21 +1,28 @@
-ul {
-    
-    width: 200px;
-    height: 20%;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
+
+
+li {
+    list-style: none;
     padding: 10px;
-    margin: 2px;
-    font-family: "Hind", sans-serif;
-    font-size: 17px;
+    text-align: center;
+   
   }
   .MovieCard img {
     height: 250px;
     margin: 5px;
     border: 2px solid rgb(82, 82, 82);
     border-radius: 10px;
+    
   }
+
+  
+
+ .MovieList {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+ }
+
+  h3 { 
+   display: block;
+   text-align: center;
+}
