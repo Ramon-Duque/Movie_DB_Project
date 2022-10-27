@@ -6,6 +6,7 @@ import { getSearchMovies } from '../services/SearchService'
 
 export default function SearchList() {
   const [inputValue, setInputValue] = useState ("");
+  const [results, setSearchResults] = useState()
   const onChange = (event: any)=>{
     event.preventDefault()
     setInputValue(event.target.value)
@@ -15,6 +16,7 @@ export default function SearchList() {
         const fetch = async () => {
       try {
         const res = await getSearchMovies(inputValue);
+        setSearchResults(res)
         console.log(res)
         // setData({ ...data, results: res.data });
       } catch (err) {
@@ -23,18 +25,12 @@ export default function SearchList() {
     };
     fetch()
    }
+  }
   
-
-  //   const fetch = async () => {
-  //     try {
-  //       const res = await getSearchMovies();
-  //       // setData({ ...data, results: res.data });
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   };
-  //  }
-  return (
+    const searchDisplay = searchResults
+    {results.map((results)) => ()
+    
+return (
     <div>
       <form className= 'searchForm'>
       <input className='searchInput' onChange={(event) => onChange(event)}/>
@@ -48,23 +44,7 @@ const useFetch = () => {
     searchItem: "",
     results: []
   });
-  // useEffect(() => {
-  //   if (data.searchItem !== "") {
-  //     const timeoutId = setTimeout(() => {
-  //       const fetch = async () => {
-  //         try {
-  //           const res = await getSearchMovies(`/${data.searchItem}`);
-  //           // setData({ ...data, results: res.data });
-  //         } catch (err) {
-  //           console.error(err);
-  //         }
-  //       };
-  //       fetch();
-  //     }, 1000);
-  //     return () => clearTimeout(timeoutId);
-  // //   }
 
-  // }, [data.searchItem]);
 
   return;
 }
