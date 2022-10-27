@@ -1,28 +1,24 @@
-
-
 li {
-    list-style: none;
-    padding: 10px;
-    text-align: center;
-   
-  }
-  .MovieCard img {
-    height: 250px;
-    margin: 5px;
-    border: 2px solid rgb(82, 82, 82);
-    border-radius: 10px;
-    
-  }
+  list-style: none;
+  padding: 10px;
+  text-align: center;
 
+  font-weight: 500;
+}
+.MovieCard img {
+  height: 250px;
+  margin: 5px;
+  border: 2px solid rgb(82, 82, 82);
+  border-radius: 10px;
   
+}
+.MovieList {
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+}
 
- .MovieList {
-    display: flex;
-    flex-direction: row;
-    overflow: scroll;
- }
-
-  h3 { 
-   display: block;
-   text-align: center;
+.sc h3 {
+  display: block;
+  text-align: center;
 }
