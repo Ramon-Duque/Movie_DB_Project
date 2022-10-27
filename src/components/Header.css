@@ -7,7 +7,7 @@ body {
 
 .header {
   overflow: hidden;
-  background-color: rebeccapurple;
+  background-image: linear-gradient(to left, #553c9a, #b393d3);
 }
 
 h1 {
