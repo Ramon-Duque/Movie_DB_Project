@@ -5,11 +5,17 @@ import { getPopMovies, getTopRated, getUpcoming } from "../services/PopularMovie
 import "./MovieCard.css";
 import { UpcomingResults } from "../models/Upcoming";
 import { TopRatedResults } from "../models/TopRated";
+import Modal from "./MovieModal";
+import useModal from "./useModal";
 
 export default function MovieList() {
   const [movies, setMovies] = useState<Result[]>([]);
   const [upcoming, setUpcoming] = useState<UpcomingResults[]>([]);
   const [topmovies, setTopMovies] = useState<TopRatedResults[]>([]);
+  const {isOpen, toggle} = useModal()
+  
+
+  
 
   useEffect(() => {
     getPopMovies().then((res) => {
@@ -42,8 +48,19 @@ export default function MovieList() {
             <img
               src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
               alt={movie.title}
+              onClick={toggle}
             />
             {movie.title}
+            <Modal isOpen={isOpen} toggle={toggle}> 
+            <div>
+            <img
+              src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
+              alt={movie.title}
+              />
+              {movie.overview}
+              
+            </div>
+            </Modal>
           </li>
         ))}
       </div>
