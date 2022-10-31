@@ -8,6 +8,7 @@ import { UpcomingResults } from "../models/Upcoming";
 import { TopRatedResults } from "../models/TopRated";
 import Modal from "./MovieModal";
 import useModal from "./useModal";
+import Movie from './Movie';
 
 export default function MovieList() {
   const [movies, setMovies] = useState<Result[]>([]);
@@ -88,23 +89,10 @@ export default function MovieList() {
                   />
                 </svg>
             </div>
-            <img
-              src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
-              alt={movie.title}
-              onClick={toggle}
-            />
+           
           </div>
-            {movie.title}
-            <Modal isOpen={isOpen} toggle={toggle}> 
-            <div>
-            <img
-              src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
-              alt={movie.title}
-              />
-              {movie.overview}
-              
-            </div>
-            </Modal>
+            
+          <Movie movie={movie}></Movie>
           </li>
         ))}
       </div>
@@ -112,13 +100,9 @@ export default function MovieList() {
       <h3>Upcoming Movies</h3>
       <div className="MovieList">
         {upcoming.map((movie) => (
-          <li className="MovieCard">
-            <img
-              src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
-              alt={movie.title}
-            />
-            {movie.title}<br></br>
-            {movie.release_date}
+           <li className="MovieCard">
+          <Movie movie={movie}></Movie>
+          {movie.release_date}
           </li>
         ))}
       </div>
@@ -127,11 +111,8 @@ export default function MovieList() {
       <div className="MovieList">
         {topmovies.map((movie) => (
           <li className="MovieCard">
-            <img
-              src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
-              alt={movie.title}
-            />
-            {movie.title}<br></br>
+            <Movie movie={movie}></Movie>
+            
             {movie.vote_average}
           </li>
         ))}
