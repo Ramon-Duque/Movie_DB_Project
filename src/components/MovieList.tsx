@@ -1,35 +1,54 @@
-import React, { useEffect, useState } from 'react'
-import { Result } from '../models/PopMovie'
-import { PopMovie } from '../models/PopMovie'
-import { getPopMovies } from '../services/PopularMovies'
-import './MovieCard.css'
 import { addFavorite, favMovie } from '../models/FavMovie';
+import React, { useEffect, useState } from "react";
+import { Result } from "../models/PopMovie";
+import { PopMovie } from "../models/PopMovie";
+import { getPopMovies, getTopRated, getUpcoming } from "../services/PopularMovies";
+import "./MovieCard.css";
+import { UpcomingResults } from "../models/Upcoming";
+import { TopRatedResults } from "../models/TopRated";
+import Modal from "./MovieModal";
+import useModal from "./useModal";
 
 export default function MovieList() {
   const [movies, setMovies] = useState<Result[]>([]);
   const [favorites, setFavorites] = useState<Result[]>(favMovie);
+  const [upcoming, setUpcoming] = useState<UpcomingResults[]>([]);
+  const [topmovies, setTopMovies] = useState<TopRatedResults[]>([]);
+  const {isOpen, toggle} = useModal()
 
-
-function handleAdd(favorites: Result) {
-  setFavorites(prevFavorites => {
-    const newFavorites = prevFavorites.slice(0);
-    newFavorites.push(favorites);
-    return newFavorites;
-  });
-  addFavorite(favorites);
-}
+  function handleAdd(favorites: Result) {
+    setFavorites(prevFavorites => {
+      const newFavorites = prevFavorites.slice(0);
+      newFavorites.push(favorites);
+      return newFavorites;
+    });
+    addFavorite(favorites);
+  }
 
   useEffect(() => {
     getPopMovies().then((res) => {
-        const { data } = res
-        setMovies(data.results);
-        console.log(res.data);
-    })
+      const { data } = res;
+      setMovies(data.results);
+      console.log(res.data);
+    });
   }, []);
 
-  return (
-    <div className='Home'>
-      <h3>Favorite Movies</h3>
+  useEffect(() => {
+    getUpcoming().then((res) => {
+      const { data } = res;
+      setUpcoming(data.results);
+    });
+  }, []);
+
+  useEffect(() => {
+    getTopRated().then((res) => {
+      const { data } = res;
+      setTopMovies(data.results);
+    });
+  }, []);
+
+    <div className="Home">
+    <h3>Favorite Movies</h3>
       <div className='MovieList'>
         {favorites.map((movie) => (
         <li className='MovieCard'>
@@ -49,15 +68,11 @@ function handleAdd(favorites: Result) {
       </div>
 
       <h3>Popular Movies</h3>
-      <div className='MovieList'>
+      <div className="MovieList">
         {movies.map((movie) => (
-        <li className='MovieCard'>
-        <div className="image-container">
-          <img
-            src= {`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
-            alt= {movie.title}
-          />
-          <div className="overlay">
+          <li className="MovieCard">
+          <div className="image-container">
+            <div className="overlay">
           <span onClick={handleAdd} className="add">Add to Favorites</span>
             <svg   
                 xmlns="http://www.w3.org/2000/svg" 
@@ -72,12 +87,54 @@ function handleAdd(favorites: Result) {
                 />
             </svg>
           </div>
-        </div>
-         {movie.title}
-        </li>
-        
-    ))}
+            <img
+              src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
+              alt={movie.title}
+              onClick={toggle}
+            />
+            </div>
+            {movie.title}
+            <Modal isOpen={isOpen} toggle={toggle}> 
+            <div>
+            <img
+              src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
+              alt={movie.title}
+              />
+              {movie.overview}
+              
+            </div>
+            </Modal>
+          </li>
+        ))}
+      </div>
+
+      <h3>Upcoming Movies</h3>
+      <div className="MovieList">
+        {upcoming.map((movie) => (
+          <li className="MovieCard">
+            <img
+              src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
+              alt={movie.title}
+            />
+            {movie.title}<br></br>
+            {movie.release_date}
+          </li>
+        ))}
+      </div>
+
+      <h3>Top Rated</h3>
+      <div className="MovieList">
+        {topmovies.map((movie) => (
+          <li className="MovieCard">
+            <img
+              src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
+              alt={movie.title}
+            />
+            {movie.title}<br></br>
+            {movie.vote_average}
+          </li>
+        ))}
       </div>
     </div>
-  )
+  );
 }

@@ -30,28 +30,32 @@
 }
 
 li {
-    list-style: none;
-    padding: 10px;
-    text-align: center;
-   
-  }
-  .MovieCard img {
-    height: 250px;
-    margin: 5px;
-    border: 2px solid rgb(82, 82, 82);
-    border-radius: 10px;
-    
-  }
+  list-style: none;
+  padding: 10px;
+  text-align: center;
 
+  font-weight: 500;
+}
+.MovieCard img {
+  height: 250px;
+  margin: 5px;
+  border: 2px solid rgb(82, 82, 82);
+  border-radius: 10px;
   
+}
+.MovieList {
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+}
 
- .MovieList {
-    display: flex;
-    flex-direction: row;
-    overflow: scroll;
- }
+.Home h3 {
+  display: block;
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
-  h3 { 
-   display: block;
-   text-align: center;
+.Home {
+  background-image: linear-gradient(to left, #553c9a, #b393d3);
+  color: White;
 }

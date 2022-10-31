@@ -4,7 +4,7 @@ import './Header.css';
 export default function Header() {
   return (
     <div className="header">
-      <h1>ExStream</h1>
+      <h1>ExtremeStream</h1>
       <a href="#home">Home</a>
       <a href="#favorites">Favorites</a>
       <div className="search-container">
