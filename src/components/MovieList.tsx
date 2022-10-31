@@ -47,6 +47,7 @@ export default function MovieList() {
     });
   }, []);
 
+    return (
     <div className="Home">
     <h3>Favorite Movies</h3>
       <div className='MovieList'>
@@ -136,5 +137,5 @@ export default function MovieList() {
         ))}
       </div>
     </div>
-  );
+  )
 }
