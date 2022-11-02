@@ -7,5 +7,5 @@ export function addFavorite(favorite: Result) {
 }
 
 export function deleteFavorite(id: number) {
-    
+    favMovie.slice(id);
 }
