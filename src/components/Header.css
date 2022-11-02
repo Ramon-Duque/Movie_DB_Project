@@ -16,23 +16,8 @@ h1 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.header a {
-  float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-.header a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
 .header .search-container {
-  float: right;
+  text-align: center;
 }
 
 .header input[type=text] {
@@ -60,5 +45,9 @@ h1 {
 @media screen and (min-width: 876px) {
   h1 {
     text-align: left;
+  }
+
+  .header .search-container {
+    float: right;
   }
 }
