@@ -7,7 +7,7 @@ import "./MovieCard.css";
 import { UpcomingResults } from "../models/Upcoming";
 import { TopRatedResults } from "../models/TopRated";
 import Modal from "./MovieModal";
-import useModal from "./useModal";
+
 import Movie from './Movie';
 
 export default function MovieList() {
@@ -15,7 +15,7 @@ export default function MovieList() {
   const [favorites, setFavorites] = useState<Result[]>(favMovie);
   const [upcoming, setUpcoming] = useState<UpcomingResults[]>([]);
   const [topmovies, setTopMovies] = useState<TopRatedResults[]>([]);
-  const {isOpen, toggle} = useModal()
+  
 
   function handleAdd(favorites: Result) {
     setFavorites(prevFavorites => {
