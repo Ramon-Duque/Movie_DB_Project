@@ -2,10 +2,10 @@ import { Result } from "./PopMovie";
 
 export let favMovie: Result[] = [];
 
-export function addFavorite(favorite: Result) {
-    favMovie.push(favorite);
+export function addFavorite(newFavorite: Result) {
+    favMovie.push(newFavorite);
 }
 
-export function deleteFavorite(id: number) {
-    favMovie.slice(id);
+export function deleteFavorite(index: number) {
+    favMovie.slice(index, 1);
 }

@@ -17,17 +17,18 @@ export default function MovieList() {
   const [topmovies, setTopMovies] = useState<TopRatedResults[]>([]);
   
 
-  function handleAdd(favorites: Result) {
+  function handleAdd(favorite: Result) {
     setFavorites(prevFavorites => {
       const newFavorites = prevFavorites.slice(0);
-      newFavorites.push(favorites);
+      newFavorites.push(favorite);
       return newFavorites;
     });
-    addFavorite(favorites);
+    addFavorite(favorite);
+    console.log(favorite);
   };
 
   function handleDelete(title: string){
-    const index = favorites.findIndex(favorites => favorites.title === title);
+    const index = favorites.findIndex(favorite => favorite.title === title);
     setFavorites(prev => {
       const newList = prev.slice(0);
       newList.splice(index, 1);
@@ -62,18 +63,14 @@ export default function MovieList() {
     <div className="Home">
     <h3>Favorite Movies</h3>
       <div className='MovieList'>
-        {movies.map((movie) => (
+        {favorites.map((movie) => (
         <li className='MovieCard'>
         <div className="image-container">
-          <img
-            src= {`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
-            alt= {movie.title}
-          />
           <div className="overlay">
-          <span onClick={() => handleDelete(favorites.title)} className="remove">Remove from Favorites</span>
+            <span onClick={handleDelete} className="remove">Remove from Favorites</span>
           </div>
+          <Movie movie={movie}></Movie>
         </div>
-         {movie.title}
         </li>
         ))}
       </div>
