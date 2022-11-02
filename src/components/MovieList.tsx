@@ -67,9 +67,12 @@ export default function MovieList() {
         <li className='MovieCard'>
         <div className="image-container">
           <div className="overlay">
-            <span onClick={handleDelete} className="remove">Remove from Favorites</span>
+            <span onClick={() => handleDelete(movie.title)} className="remove">
+              Remove from Favorites
+            </span>
           </div>
-          <Movie movie={movie}></Movie>
+
+        <Movie movie={movie}></Movie>
         </div>
         </li>
         ))}
@@ -81,7 +84,9 @@ export default function MovieList() {
           <li className="MovieCard">
           <div className="image-container">
             <div className="overlay">
-              <span onClick={handleAdd} className="add">Add to Favorites</span>
+              <span onClick={() => handleAdd(movie)} className="add">
+                Add to Favorites
+              </span>
                 <svg   
                     xmlns="http://www.w3.org/2000/svg" 
                     width="18" 
@@ -108,7 +113,9 @@ export default function MovieList() {
            <li className="MovieCard">
             <div className="image-container">
               <div className="overlay">
-              <span onClick={handleAdd} className="add">Add to Favorites</span>
+              <span onClick={() => handleAdd(movie)} className="add">
+                Add to Favorites
+              </span>
                 <svg   
                     xmlns="http://www.w3.org/2000/svg" 
                     width="18" 
@@ -136,7 +143,9 @@ export default function MovieList() {
           <li className="MovieCard">
             <div className="image-container">
             <div className="overlay">
-              <span onClick={handleAdd} className="add">Add to Favorites</span>
+            <span onClick={() => handleAdd(movie)} className="add">
+                Add to Favorites
+              </span>
                 <svg   
                     xmlns="http://www.w3.org/2000/svg" 
                     width="18" 
