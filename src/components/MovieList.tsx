@@ -98,12 +98,9 @@ export default function MovieList() {
                   />
                 </svg>
             </div>
-            <img
-              src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
-              alt={movie.title}
-            />
-          </div>
+          
           <Movie movie={movie}></Movie>
+          </div>
           </li>
         ))}
       </div>
@@ -128,13 +125,10 @@ export default function MovieList() {
                   />
                 </svg>
             </div>
-            <img
-              src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
-              alt={movie.title}
-            />
-          </div>
           <Movie movie={movie}></Movie><br></br>
+          </div>
           {movie.release_date}
+          
           </li>
         ))}
       </div>
@@ -159,12 +153,8 @@ export default function MovieList() {
                   />
                 </svg>
             </div>
-            <img
-              src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
-              alt={movie.title}
-            />
-            </div>
             <Movie movie={movie}></Movie><br></br>
+            </div>
             {movie.vote_average}
           </li>
         ))}
